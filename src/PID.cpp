@@ -12,7 +12,7 @@ PID::~PID() {}
 
 void PID::Init(double Kp, double Ki, double Kd) {
 
-	Kp = 0.2;
+	Kp = 20;　 //0.2
 	Ki = 3.0;
 	Kd = 0.004;
 	i_error = 0;
