@@ -23,6 +23,11 @@ public:
   double prev_cte;
   bool is_initialized;
 
+
+  int num;
+  double error_sum;
+  double error_eval;
+
   /*
   * Constructor
   */

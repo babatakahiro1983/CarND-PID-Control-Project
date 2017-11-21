@@ -34,6 +34,9 @@ int main()
 
   PID pid;
 
+  pid.num = 0;
+  pid.error_sum = 0;
+
 
   // TODO: Initialize the pid variable.
   pid.Init(pid.Kp, pid.Ki, pid.Kd);
@@ -54,10 +57,8 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
-		  int num = 0;
-		  double error_sum = 0;
-		  double error_eval;
-          
+ 		
+
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
@@ -74,13 +75,14 @@ int main()
           std::cout << "speed: " << speed << std::endl;	
           std::cout << "angle: " << angle << std::endl;		
 
-          error_eval = pid.ErrorEvaluation(cte, num, error_sum);
+          error_eval = pid.ErrorEvaluation(cte, pid.num, pid.error_sum);
+          std::cout << "error_eval: " << error_eval << std::endl;	
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          //std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
         }
       } else {
