@@ -33,9 +33,7 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  int num = 0;
-  double error_sum = 0;
-  double error_eval;
+
 
   // TODO: Initialize the pid variable.
   pid.Init(pid.Kp, pid.Ki, pid.Kd);
@@ -56,6 +54,10 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
+		  int num = 0;
+		  double error_sum = 0;
+		  double error_eval;
+          
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
