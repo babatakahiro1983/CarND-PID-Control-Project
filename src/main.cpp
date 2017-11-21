@@ -80,7 +80,7 @@ int main()
           pid.num += 1;	
           pid.error_sum += cte * cte;
 
-          if ((pid.num > 0) && ((pid.num % 100) == 0))  {
+          if ((pid.num > 0) && ((pid.num % 20) == 0))  {
           	pid.error_eval = pid.error_sum / pid.num;
           	std::cout << "error_eval: " << pid.error_eval << std::endl;
           	std::cout << "best_error: " << pid.best_error << std::endl;
