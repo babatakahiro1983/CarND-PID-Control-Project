@@ -86,7 +86,7 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 		for (int i = 0; i < 3; i++) {
 			p[i] += dp[i];
 			//robot = make_robot();
-			x_trajectory, y_trajectory, err = run(robot, p);
+			//x_trajectory, y_trajectory, err = run(robot, p);
 			
 			if (err < best_err) {
 				best_err = err;
@@ -95,7 +95,7 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 			else {
 				p[i] -= 2 * dp[i];
 				//robot = make_robot();
-				x_trajectory, y_trajectory, err = run(robot, p);
+				//x_trajectory, y_trajectory, err = run(robot, p);
 				
 				if (err < best_err) {
 					best_err = err;
