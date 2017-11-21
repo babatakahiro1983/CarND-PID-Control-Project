@@ -27,6 +27,8 @@ public:
   int num;
   double error_sum;
   double error_eval;
+  double best_error;
+
 
   /*
   * Constructor
