@@ -52,7 +52,7 @@ double PID::TotalError() {
 	return total_error;
 }
 
-double PID::ErrorEvaluation(double cte, int num) {
+double PID::ErrorEvaluation(double cte, int num, double error_sum) {
 
 	double error_eval;
 		
