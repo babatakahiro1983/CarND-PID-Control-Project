@@ -44,7 +44,7 @@ double PID::TotalError() {
 
 	double total_error;
 	Kp = 0.001;
-	Ki = 3.0;
+	Ki = 0.01;
 	Kd = 0.004;
 
 	total_error = - Kp * p_error - Kd * d_error - Ki * i_error;
