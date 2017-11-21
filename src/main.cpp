@@ -83,6 +83,7 @@ int main()
           if ((pid.num > 0) && ((pid.num % 100) == 0))  {
           	pid.error_eval = pid.error_sum / pid.num;
           	std::cout << "error_eval: " << pid.error_eval << std::endl;
+          	std::cout << "best_error: " << pid.best_error << std::endl;
           	pid.num = 0;
           	pid.error_sum = 0;
           	std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
