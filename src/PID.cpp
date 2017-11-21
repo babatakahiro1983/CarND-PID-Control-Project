@@ -43,7 +43,7 @@ void PID::UpdateError(double cte) {
 double PID::TotalError() {
 
 	double total_error;
-	Kp = 0.01;
+	Kp = 0.001;
 	Ki = 3.0;
 	Kd = 0.004;
 
