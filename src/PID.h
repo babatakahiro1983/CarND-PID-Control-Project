@@ -56,7 +56,7 @@ public:
   /*
   *
   */
-  double ErrorEvaluation(double cte, int num);
+   double ErrorEvaluation(double cte, int num, double error_sum);
 };
 
 #endif /* PID_H */
