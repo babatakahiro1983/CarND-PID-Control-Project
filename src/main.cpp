@@ -34,7 +34,7 @@ int main()
 
   PID pid;
   int num = 0;
-  double 
+  double error_sum = 0;
 
   // TODO: Initialize the pid variable.
   pid.Init(pid.Kp, pid.Ki, pid.Kd);
@@ -68,6 +68,8 @@ int main()
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+
+          ErrorEvaluation(cte, num);
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
