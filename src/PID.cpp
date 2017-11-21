@@ -43,9 +43,9 @@ void PID::UpdateError(double cte) {
 double PID::TotalError() {
 
 	double total_error;
-	Kp = 0.001;
-	Ki = 0.01;
-	Kd = 0.004;
+	Kp = 1;
+	Ki = 1;
+	Kd = 1;
 
 	total_error = - Kp * p_error - Kd * d_error - Ki * i_error;
 
