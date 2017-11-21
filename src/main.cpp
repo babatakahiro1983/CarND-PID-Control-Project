@@ -33,6 +33,9 @@ int main()
   uWS::Hub h;
 
   PID pid;
+  int num = 0;
+  double 
+
   // TODO: Initialize the pid variable.
   pid.Init(pid.Kp, pid.Ki, pid.Kd);
 
