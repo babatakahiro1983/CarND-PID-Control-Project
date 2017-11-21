@@ -33,8 +33,9 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  //int num = 0;
-  //double error_sum = 0;
+  int num = 0;
+  double error_sum = 0;
+  double error_eval;
 
   // TODO: Initialize the pid variable.
   pid.Init(pid.Kp, pid.Ki, pid.Kd);
@@ -68,10 +69,10 @@ int main()
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
-	  std::cout << "speed: " << speed << std::endl;	
-	  std::cout << "angle: " << angle << std::endl;		
+          std::cout << "speed: " << speed << std::endl;	
+          std::cout << "angle: " << angle << std::endl;		
 
-          //pid.ErrorEvaluation(cte, num, error_sum);
+          error_eval = pid.ErrorEvaluation(cte, num, error_sum);
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
