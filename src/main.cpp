@@ -69,7 +69,7 @@ int main()
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
-          ErrorEvaluation(cte, num);
+          ErrorEvaluation(cte, num, error_sum);
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
