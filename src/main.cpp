@@ -75,8 +75,8 @@ int main()
           std::cout << "speed: " << speed << std::endl;	
           std::cout << "angle: " << angle << std::endl;		
 
-          error_eval = pid.ErrorEvaluation(cte, pid.num, pid.error_sum);
-          std::cout << "error_eval: " << error_eval << std::endl;	
+          pid.error_eval = pid.ErrorEvaluation(cte, pid.num, pid.error_sum);
+          std::cout << "error_eval: " << pid.error_eval << std::endl;	
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
