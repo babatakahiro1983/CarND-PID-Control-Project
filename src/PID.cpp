@@ -56,8 +56,7 @@ double PID::ErrorEvaluation(double cte, int num, double error_sum) {
 
 	double error_eval;
 		
-	error_sum += error_sum + cte * cte;
-	num += 1;
+	error_sum += cte * cte;
 
 	if (num > 0) {
 		error_eval = error_sum / num;

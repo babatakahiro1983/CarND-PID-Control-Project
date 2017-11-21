@@ -75,7 +75,14 @@ int main()
           std::cout << "speed: " << speed << std::endl;	
           std::cout << "angle: " << angle << std::endl;		
 
-          pid.error_eval = pid.ErrorEvaluation(cte, pid.num, pid.error_sum);
+          pid.num += 1;	
+          pid.error_sum += cte * cte;
+
+          if (num > 0) {
+          	pid.error_eval = pid.error_sum / pid.num;
+          }
+
+          //pid.error_eval = pid.ErrorEvaluation(cte, pid.num, pid.error_sum);
           std::cout << "error_eval: " << pid.error_eval << std::endl;	
 
           json msgJson;
