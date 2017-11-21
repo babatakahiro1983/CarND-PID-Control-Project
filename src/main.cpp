@@ -91,9 +91,13 @@ int main()
             if(pid.error_eval < pid.best_error){
             	pid.best_error = pid.error_eval;
             	pid.Kp *= 1.1;
+            	pid.Ki *= 1.1;
+            	pid.Kd *= 1.1;
  	 	
             }else{
             	pid.Kp *= 0.9;
+            	pid.Ki *= 0.9;
+            	pid.Kd *= 0.9;
             }
             std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
           }
