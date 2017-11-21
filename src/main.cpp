@@ -68,6 +68,8 @@ int main()
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+	  std::cout << "speed: " << speed << std::endl;	
+	  std::cout << "angle: " << angle << std::endl;		
 
           //pid.ErrorEvaluation(cte, num, error_sum);
 
