@@ -87,7 +87,7 @@ int main()
 		  pid.p[0] = pid.Kp;
 		  pid.p[1] = pid.Ki;
 		  pid.p[2] = pid.Kd;
-		  std::cout << "dp0: " << pid.dp[0] << "dp1: " << pid.dp[1] << "dp2: " << pid.dp[2] << std::endl;
+		  //std::cout << "dp0: " << pid.dp[0] << "dp1: " << pid.dp[1] << "dp2: " << pid.dp[2] << std::endl;
 
           if ((pid.num > 0) && ((pid.num % 20) == 0) && (pid.dp[0] + pid.dp[1] + pid.dp[2] > 0.2)) {
           	pid.error_eval = pid.error_sum / pid.num;
@@ -124,6 +124,8 @@ int main()
 		  pid.Kp = pid.p[0];
 		  pid.Ki = pid.p[1];
 		  pid.Kd = pid.p[2];
+
+		  std::cout << "tune_para_num: " << pid.tune_para_num << std::endl;
 
           std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
 
