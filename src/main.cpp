@@ -111,7 +111,7 @@ int main()
 			}
             // pid.best_error = pid.error_eval;
 
-            std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
+            
 
 			if (pid.tune_para_num < 2) {
 				pid.tune_para_num += 1;
@@ -121,8 +121,12 @@ int main()
 				pid.flg = false;
 			}			
           }
+		  pid.Kp = pid.p[0];
+		  pid.Ki = pid.p[1];
+		  pid.Kd = pid.p[2];
 
-          
+          std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
+
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = 0.3;
