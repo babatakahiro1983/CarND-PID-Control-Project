@@ -37,6 +37,9 @@ int main()
   pid.num = 0;
   pid.error_sum = 0;
   pid.best_error = 10000000000;
+  pid.dp = { 1, 1, 1 };
+  pid.tune_para_num = 0;
+  pid.flg = false;
 
 
   // TODO: Initialize the pid variable.
@@ -79,28 +82,41 @@ int main()
 
           pid.num += 1;	
           pid.error_sum += cte * cte;
+		  pid.p[0] = pid.Kp;
+		  pid.p[1] = pid.Ki;
+		  pid.p[2] = pid.Kd;
 
-          if ((pid.num > 0) && ((pid.num % 20) == 0))  {
+          if ((pid.num > 0) && ((pid.num % 20) == 0) && (accumulate(dp.begin(), dp.end(), 0) > 0.2)) {
           	pid.error_eval = pid.error_sum / pid.num;
           	std::cout << "error_eval: " << pid.error_eval << std::endl;
           	std::cout << "best_error: " << pid.best_error << std::endl;
           	pid.num = 0;
           	pid.error_sum = 0;
-          	std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
-            
+          	std::cout << "Kp: " << pid.p[0] << "Ki: " << pid.p[1] << "Kd: " << pid.p[2] << std::endl;
+			
             if(pid.error_eval < pid.best_error){
-            	pid.Kp *= 1.1;
-            	pid.Ki *= 1.1;
-            	pid.Kd *= 1.1;
+				pid.best_error = pid.error_eval;
+				pid.dp[pid.tune_para_num] *= 1.1;
  	 	
-            }else{
-            	pid.Kp *= 0.9;
-            	pid.Ki *= 0.9;
-            	pid.Kd *= 0.9;
-            }
-            pid.best_error = pid.error_eval;
+            }else if(pid.flg == false) {
+				pid.p[pid.tune_para_num] -= 2 * pid.dp[pid.tune_para_num];
+				pid.flg = true;
+			}
+			else {
+				pid.p[pid.tune_para_num] +=  pid.dp[pid.tune_para_num];
+				pid.dp[pid.tune_para_num] *= 0.9;
+			}
+            // pid.best_error = pid.error_eval;
 
             std::cout << "Kp: " << pid.Kp << "Ki: " << pid.Ki << "Kd: " << pid.Kd << std::endl;
+
+			if (pid.tune_para_num < 2) {
+				pid.tune_para_num += 1;
+			}
+			else {
+				pid.tune_para_num = 0;
+				pid.flg = false;
+			}			
           }
 
           

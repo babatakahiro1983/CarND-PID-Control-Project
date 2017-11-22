@@ -28,7 +28,10 @@ public:
   double error_sum;
   double error_eval;
   double best_error;
-
+  std::vector<double>dp;
+  std::vector<double>p;
+  int tune_para_num;
+  bool flg;
 
   /*
   * Constructor
