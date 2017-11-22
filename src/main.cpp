@@ -86,7 +86,7 @@ int main()
 		  pid.p[1] = pid.Ki;
 		  pid.p[2] = pid.Kd;
 
-          if ((pid.num > 0) && ((pid.num % 20) == 0) && (accumulate(dp.begin(), dp.end(), 0) > 0.2)) {
+          if ((pid.num > 0) && ((pid.num % 20) == 0) && (pid.dp[0] + pid.dp[1] + pid.dp[2] > 0.2)) {
           	pid.error_eval = pid.error_sum / pid.num;
           	std::cout << "error_eval: " << pid.error_eval << std::endl;
           	std::cout << "best_error: " << pid.best_error << std::endl;
