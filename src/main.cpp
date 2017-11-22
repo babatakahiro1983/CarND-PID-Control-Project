@@ -37,7 +37,7 @@ int main()
   pid.num = 0;
   pid.error_sum = 0;
   pid.best_error = 10000000000;
-  pid.dp = { 1, 1, 1 };
+  pid.dp = { 0.0001, 0.0001, 0.0001 };
   pid.p = { 0, 0, 0 };
   pid.tune_para_num = 0;
   pid.flg = false;
