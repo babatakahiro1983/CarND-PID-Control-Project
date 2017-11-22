@@ -24,6 +24,16 @@ void PID::Init(double Kp, double Ki, double Kd) {
 
 }
 
+void PID::Init_throttle(double Kp, double Ki, double Kd) {
+
+	PID::Kp_throttle = Kp;
+	PID::Ki_throttle = Ki;
+	PID::Kd_throttle = Kd;
+	i_error_throttle = 0;
+	is_initialized_throttle = false;
+
+}
+
 void PID::UpdateError(double cte) {
 
 	if (is_initialized == false) {
@@ -40,30 +50,30 @@ void PID::UpdateError(double cte) {
 
 }
 
+void PID::UpdateError_throttle(double speed_error) {
+
+	if (is_initialized_throttle == false) {
+
+		prev_speed_error = speed_error;
+		is_initialized_throttle = true;
+	}
+
+	p_error_throttle = speed_error;
+	i_error_throttle += speed_error;
+	d_error_throttle = speed_error - prev_speed_error;
+
+	prev_speed_error = speed_error;
+
+}
+
+
 double PID::TotalError() {
 
 	double total_error;
-	//Kp = 0.006;
-	//Ki = 0.006;
-	//Kd = 0.003;
 
 	total_error = - Kp * p_error - Kd * d_error - Ki * i_error;
 
 	return total_error;
-}
-
-double PID::ErrorEvaluation(double cte, int num, double error_sum) {
-
-	double error_eval;
-		
-	error_sum += cte * cte;
-
-	if (num > 0) {
-		error_eval = error_sum / num;
-	}
-
-	return error_eval;
-
 }
 
 
@@ -83,26 +93,26 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 	//	cout << "Iteration: " << it << "best error: " << best_err << endl;
 
 	//	for (int i = 0; i < 3; i++) {
-	//		p[i] += dp[i];
+	//		p[i] = p[i] + dp[i];
 	//		robot = make_robot();
 	//		x_trajectory, y_trajectory, err = run(robot, p);
 			
 	//		if (err < best_err) {
 	//			best_err = err;
-	//			dp[i] *= 1.1;
+	//			dp[i] = dp[i] * 1.1;
 	//		}
 	//		else {
-	//			p[i] -= 2 * dp[i];
+	//			p[i] = p[i] - 2 * dp[i];
 	//			robot = make_robot();
 	//			x_trajectory, y_trajectory, err = run(robot, p);
 	//			
 	//			if (err < best_err) {
 	//				best_err = err;
-	//				dp[i] *= 1.1;
+	//				dp[i] = dp[i] * 1.1;
 	//			}
 	//			else {
-	//				p[i] += dp[i];
-	//				dp[i] *= 0.9;
+	//				p[i] = p[i] + dp[i];
+	//				dp[i] = dp[i] * 0.9;
 	//			}
 	//		}
 	//	}
@@ -114,4 +124,18 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 	//Kd = p[1];
 
 	//return p, best_err;
+}
+
+
+void PID::CalcTargetSpeed(double cte) {
+
+
+	if (fabs(cte) < 10) {
+
+		target_speed = 30;
+	}
+	else {
+		target_speed = 10;
+	}
+
 }
