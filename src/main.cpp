@@ -42,7 +42,6 @@ int main()
   pid.tune_para_num = 0;
   pid.flg = false;
 
-  std::cout << "check1" <<  endl;
 
 
   // TODO: Initialize the pid variable.
