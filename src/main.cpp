@@ -45,7 +45,7 @@ int main()
 
 
   // TODO: Initialize the pid variable.
-  pid.Init(0.065, 0.5, 0.001);
+  pid.Init(0.001, 0, 0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -97,7 +97,7 @@ int main()
 		  pid.p[2] = pid.Kd;
 		  //std::cout << "dp0: " << pid.dp[0] << "dp1: " << pid.dp[1] << "dp2: " << pid.dp[2] << std::endl;
 
-          if ((pid.num > 0) && ((pid.num % 20) == 0) && (pid.dp[0] + pid.dp[1] + pid.dp[2] > 0.00005)) {
+          if ((pid.num < 0) && ((pid.num % 20) == 0) && (pid.dp[0] + pid.dp[1] + pid.dp[2] > 0.00005)) {
           	pid.error_eval = pid.error_sum / pid.num;
           	std::cout << "error_eval: " << pid.error_eval << std::endl;
           	std::cout << "best_error: " << pid.best_error << std::endl;
