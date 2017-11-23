@@ -130,7 +130,7 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 void PID::CalcTargetSpeed(double cte) {
 
 
-	if (fabs(cte) < 10) {
+	if (fabs(cte) < 1) {
 
 		target_speed = 30;
 	}
@@ -138,4 +138,5 @@ void PID::CalcTargetSpeed(double cte) {
 		target_speed = 10;
 	}
 
+	//target_speed = 30 * (1 - abs(steer_value)) + 20;
 }
