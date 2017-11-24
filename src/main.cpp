@@ -67,11 +67,7 @@ int main()
           double steer_value;
 		  double throttle;
 
-		  // Calc target speed
-		  pid.CalcTargetSpeed(cte);
-
-		  // Calc Speed error
-		  double speed_error = speed - pid.target_speed;
+		 
 
           /*
           * TODO: Calcuate steering value here, remember the steering value is
@@ -90,6 +86,13 @@ int main()
 		  if (steer_value < -1) {
 			  steer_value = -1;
 		  }
+
+
+ 		  // Calc target speed
+		  pid.CalcTargetSpeed(steer_value);
+
+		  // Calc Speed error
+		  double speed_error = speed - pid.target_speed;
 
 		  // throttle pid control
 		  pid.UpdateError_throttle(speed_error);
