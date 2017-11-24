@@ -130,7 +130,7 @@ void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
 void PID::CalcTargetSpeed(double cte) {
 
 
-	if (fabs(cte) < 1) {
+	if (std::fabs(cte) < 1) {
 
 		target_speed = 30;
 	}
