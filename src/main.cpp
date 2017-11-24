@@ -71,7 +71,7 @@ int main()
 		  pid.CalcTargetSpeed(cte);
 
 		  // Calc Speed error
-		  double speed_error = pid.target_speed - speed;
+		  double speed_error = speed - pid.target_speed;
 
           /*
           * TODO: Calcuate steering value here, remember the steering value is
