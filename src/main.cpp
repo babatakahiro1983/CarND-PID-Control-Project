@@ -89,7 +89,7 @@ int main()
 
 
  		  // Calc target speed
-		  pid.CalcTargetSpeed(steer_value);
+		  pid.CalcTargetSpeed(cte);
 
 		  // Calc Speed error
 		  double speed_error = speed - pid.target_speed;
