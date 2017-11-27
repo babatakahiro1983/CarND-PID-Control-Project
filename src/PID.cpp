@@ -78,56 +78,6 @@ double PID::TotalError() {
 }
 
 
-void PID::Twiddle(double cte, double Kp, double Ki, double Kd) {
-
-	//double tol = 0.2;
-	//vector<double>p = {0, 0, 0};
-	//vector<double>dp = {1, 1, 1};
-	//robot = make_robot();
-	//x_trajectory, y_trajectory, best_err = run(robot, p);
-
-	//best_err = cte;
-	
-	//int it = 0;
-		
-	//while (accumulate(dp.begin(), dp.end(), 0) > tol) {
-	//	cout << "Iteration: " << it << "best error: " << best_err << endl;
-
-	//	for (int i = 0; i < 3; i++) {
-	//		p[i] = p[i] + dp[i];
-	//		robot = make_robot();
-	//		x_trajectory, y_trajectory, err = run(robot, p);
-			
-	//		if (err < best_err) {
-	//			best_err = err;
-	//			dp[i] = dp[i] * 1.1;
-	//		}
-	//		else {
-	//			p[i] = p[i] - 2 * dp[i];
-	//			robot = make_robot();
-	//			x_trajectory, y_trajectory, err = run(robot, p);
-	//			
-	//			if (err < best_err) {
-	//				best_err = err;
-	//				dp[i] = dp[i] * 1.1;
-	//			}
-	//			else {
-	//				p[i] = p[i] + dp[i];
-	//				dp[i] = dp[i] * 0.9;
-	//			}
-	//		}
-	//	}
-	//	it += 1;
-	//}
-
-	//Kp = p[0];
-	//Ki = p[1];
-	//Kd = p[1];
-
-	//return p, best_err;
-}
-
-
 void PID::CalcTargetSpeed(double cte) {
 
 
@@ -140,6 +90,4 @@ void PID::CalcTargetSpeed(double cte) {
 	}else{
 		target_speed = 30;
 	}
-
-	//target_speed = 30 * (1 - std::fabs(steer_value)) + 20;
 }

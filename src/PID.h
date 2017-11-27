@@ -77,11 +77,6 @@ public:
   double TotalError();
 
   /*
-  * 
-  */
-  void Twiddle(double cte, double Kp, double Ki, double Kd);
-
-  /*
   *
   */
   void CalcTargetSpeed(double cte);
